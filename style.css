@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+html {
+  font-family: "Kreon", serif;
+}
+
+body {
+  background-color: #242627;
+}
+
+.container {
+  display: flex;
+  max-width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 70px;
+}
+.container aside {
+  flex: 1 1 20%;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.container aside header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  width: 100%;
+  padding: 30px 0 0;
+  background-color: #404243;
+}
+.container aside header .profile-img-wrap {
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+.container aside header .profile-img-wrap .profile-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.container aside header .contact-box {
+  display: flex;
+  gap: 15px;
+}
+.container aside header .contact-box .contact {
+  width: 40px;
+  height: 40px;
+  background-color: #242627;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.container aside header .contact-box .contact:hover {
+  color: #242627;
+  background-color: #FFFFE0;
+}
+.container aside header nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin-top: 2px;
+  border-top: 2px solid #242627;
+}
+.container aside header nav div {
+  cursor: pointer;
+  padding: 30px;
+  background-color: #404243;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container aside header nav .home {
+  border-right: 1px solid #242627;
+}
+.container aside header nav .login {
+  border-left: 1px solid #242627;
+}
+.container aside .search {
+  margin-top: 30px;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.container aside .search input {
+  padding: 15px;
+  outline: none;
+  border: none;
+  background-color: #404243;
+  color: #FFFFFF;
+  width: 100%;
+}
+.container aside .search a {
+  right: 30px;
+  padding: 15px 30px;
+  background-color: #404243;
+}
+.container aside .search a:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.container aside .search a:hover i {
+  color: #FFFFE0;
+}
+.container aside .search a i {
+  color: #666;
+}
+.container aside .tag-container {
+  background-color: #404243;
+  width: 100%;
+  margin-top: 30px;
+}
+.container aside .tag-container h2 {
+  padding: 30px;
+  border-bottom: 1px solid #242627;
+}
+.container aside .tag-container .tag-box {
+  padding: 30px;
+}
+.container aside .tag-container .tag-box ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.container aside .tag-container .tag-box ul li {
+  text-decoration: none;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.09);
+  padding: 5px;
+  cursor: pointer;
+}
+.container aside .tag-container .tag-box ul li:hover {
+  background-color: #FFFFFF;
+}
+.container aside .tag-container .tag-box ul li:hover a {
+  color: #404243;
+}
+.container aside .tag-container .tag-box ul li a {
+  text-decoration: none;
+  color: white;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+.container main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1 1 70%;
+}
+.container main .blog {
+  padding: 30px 50px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.container main .blog .blog-info .blog-header {
+  color: #0064c4;
+  cursor: pointer;
+}
+.container main .blog .blog-info .blog-header:hover {
+  color: #242627;
+}
+.container main .blog .blog-info .info {
+  color: #666;
+  display: flex;
+  gap: 5px;
+}
+.container main .blog .blog-info .info .author {
+  cursor: pointer;
+}
+.container main .blog .blog-info .info .tag {
+  cursor: pointer;
+}
+.container main .blog-content {
+  color: #333;
+  font-size: 1rem;
+}/*# sourceMappingURL=style.css.map */
