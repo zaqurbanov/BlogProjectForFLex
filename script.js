@@ -40,21 +40,27 @@
     
     let blog3 = new BlogsConstructor("Matematik ve Oyun Programlama - Missile Command - Bölüm 1","18 KASIM 2022"," BURAK-SELIM-SENYURT","RUST","Uzun bir süredir Rust programlama dili ile hobi amaçlı uğraşıyorum. Son birkaç aydırda Rust tarafında kullanılan oyun motorlarını kurcalamaktayım. Ancak birkaç haftadır amacım oyun programlamada kullanılan temel matematik enstrümanları öğrenmek. Bana göre bu alanda ilerleyebilmemin en iyi yolu bilinen oyunların birer klonunu yazmaya çalışmak. Onca vektör, açı, nokta çarpım problemini işledikten sonra ilk gözüme kestirdiğim zamanın efsane Atari oyunlarından olan Missile Command. Kaynaklara göre seksenli yılların en kült oyunlarından birisi olarak karşımıza çıkıyor. Oyunda ekranın üst kısmında rastgele açılarda ve sayıda füzenin üssümüze inişine şahit oluyoruz. Oyuncu üssün tam orta yerinde duran füze rampasında ateş ederek şehre inen füzeleri patlatmaya çalışıyor. Görüntü tamamen piksel hareketlerinden oluşmakta ve benim asıl ilgilendiğim oyunun arkasındaki olası matematik hesaplamalar.");
     let blog4 = new BlogsConstructor('Birisi Sana "Blazor Nedir?" Diye Sorarsa',"08 MAYIS 2021"," BURAK-SELIM-SENYURT","BLAZOR","Yeni bir on yılın arifesini çoktan geçtik ve bu on yıla girmeden önce Microsoft çok önemli geliştirmelerin altına imza attı. Açık kaynak dünyasına hızlı bir girişten sonra yıllardır devam eden Mono projesi daha da anlam kazandı. Artık elimizde Silverlight, Windows Phone, Web Forms, .Net Remoting gibi kavramlar yok. Bunların yerine yenileri ve daha fazlası geldi. Xamarin ile platform bağımsız oyunlar, mobil uygulamalar, macOS ve linux ayırt etmeksizin çalışan kodlar... Dahası da var. 2017'de başlatılan ve standart haline gelen WASM(Web Assembly), Microsoft cephesinin gözünden kaçmadı. 2018 yılında deneysel bir çalışma olarak başlayan Blazor yıllar içerisinde gelişti ve şu anda üzerine yatırım yapılması gereken(mesela on yıllık Asp.Net Web Forms tabanlı ürünlerinizi modernize etmek istiyorsanız) bir konu haline geldi. Ancak ortada önemli bir sorun var. Onu bir arkadaşına nasıl anlatırsın?")
-    let blogs = [blog1,blog2,blog3,blog4];
+    let blog5 = new BlogsConstructor("Asp.Net Core'a Nasıl Merhaba Deriz?","25 NISAN 2021"," BURAK-SELIM-SENYURT",".NET CORE","Yazılım geliştirme işine ciddi anlamda başladığım yeni milenyumun başlarında .Net Framework sahanın yükselen yıldızıydı. C# programlama dilinin gücü ve .Net Framework çatısının vadettikleri düşünülünce bu son derece doğaldı. Aradan geçen neredeyse 20 yıllık süre zarfında .Net Framework'te evrimleşti. Microsoft'un açık kaynak dünyasına girişi, cross-platform stratejileri, Linux gibi bir zamanların ciddi rakipleri ile el sıkışarak hamle yapması sonrasında da son beş yıllık zaman diliminde .Net Core hayatımıza girdi. Bu beraberinde Microsoft'un sıklıkla yaptığı üzere bazı kavram karmaşalarını da beraberinde getirdi. En nihayetinde tek ve birleşik bir .Net 5 ortamından bahsedilmeye başlandı... ");
+    let blog6 = new BlogsConstructor("Tie Fighter Değil, Project Tye!","30 MART 2021","BURAK-SELIM-SENYURT",".NET CORE","Açık kaynak olarak yayınlanan Project Tye, Microsoft'un deneysel projelerinden birisi. En azından konuya çalıştığım tarih itibariyle böyleydi. Projenin iki temel amacı var; .Net tabanlı mikroservis çözümlerinin daha kolay geliştirilmesini sağlamak ve söz konusu çözümleri az zahmetle Kubernetes ortamına almak(Deployment) Buna göre birden fazla servisi tek komutla ayağa kaldırmak, Redis, RabbitMQ vb normalde Sidecar container olan bağımlılıkları kolayca yönetmek, kullanılacak servislerin kolayca keşfedilmesini sağlamak(Service Discovery), uygulamaların container olarak evrilmesi için gerekli hazırlıkları otomatikleştirmek, olabildiğince basit ve tekil bir Kubernetes konfigurasyon dosyası desteği vermek, projenin genel amaçları olarak düşünülebilir.");
+    let blogs = [blog1,blog2,blog3,blog4,blog5,blog6];
     
      let tags = document.querySelectorAll(".tagg");
      tags.forEach(e=>{
         e.addEventListener("click",()=>{
 
            let selectTag = e.innerText;
-           console.log(selectTag);
+           
+           let search = blogs.filter(blog=> blog.category.toLowerCase() === selectTag.toLowerCase());
+         let result = search.length>0 ? search : blogs;
+         blogContainer.innerHTML = ""
+         createBlog(result)
         })
      })
 
   
     
-   function createBlog(){
-     return   (blogs.forEach(e=>{
+   function createBlog(result){
+     return   (result.forEach(e=>{
             let {blogHead,blogTime,author,content,category}=e;
             let blog = document.createElement("div");
             blog.classList.add("blog");
@@ -102,9 +108,12 @@
 
     
     
+        createBlog(blogs);
     
     
-createBlog();
+    
+
+
 
 
 
