@@ -4,7 +4,16 @@
 
     let tagList = document.getElementById("tag-list");
     let blogContainer = document.getElementById("blog-container");
-  
+    let searchForm = document.querySelector(".search");
+    let searchInput = document.querySelector(".search input");
+    let modal = document.getElementById("blog-modal");
+    let modalClose = document.getElementById("modal-close");
+    let modalHeader = modal.querySelector(".modal-header");
+    let modalDate = modal.querySelector(".modal-info .date");
+    let modalAuthor = modal.querySelector(".modal-info .author");
+    let modalTag = modal.querySelector(".modal-info .tag");
+    let modalContent = modal.querySelector(".modal-content");
+
     
     let tagArray = [".net",".net core",".net core 2.0",".net framework",".net framework 4.0",".net remoting",".net ria services","ado.net","ado.net 2.0","ado.net data services","ado.net entity framework" ,"ado.net entity framework 4.0","algorithms","api","asp.net","asp.net 2.0","asp.net 4.0","asp.net 4.5","asp.net core" ,"asp.net web api","async","asynchronous programming","RUST"
     ]
@@ -59,12 +68,31 @@
 
   
     
+   function openModal(blog){
+        modalHeader.innerText = blog.blogHead;
+        modalDate.innerText = blog.blogTime;
+        modalAuthor.innerText = blog.author;
+        modalTag.innerText = blog.category;
+        modalContent.innerText = blog.content;
+        modal.classList.add("active");
+    }
+
+    function closeModal(){
+        modal.classList.remove("active");
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e)=>{
+        if(e.target === modal) closeModal();
+    })
+
    function createBlog(result){
      return   (result.forEach(e=>{
             let {blogHead,blogTime,author,content,category}=e;
             let blog = document.createElement("div");
             blog.classList.add("blog");
-        
+            blog.addEventListener("click", ()=> openModal(e));
+
 
             let blogInfo = document.createElement("div");
             blogInfo.classList.add("blog-info");
@@ -109,6 +137,20 @@
     
     
         createBlog(blogs);
+
+    searchForm.addEventListener("submit", (e)=> e.preventDefault());
+
+    searchInput.addEventListener("input", ()=>{
+        let query = searchInput.value.trim().toLowerCase();
+        let result = query === "" ? blogs : blogs.filter(blog=>
+            blog.blogHead.toLowerCase().includes(query) ||
+            blog.content.toLowerCase().includes(query) ||
+            blog.author.toLowerCase().includes(query) ||
+            blog.category.toLowerCase().includes(query)
+        );
+        blogContainer.innerHTML = "";
+        createBlog(result);
+    })
     
     
     
